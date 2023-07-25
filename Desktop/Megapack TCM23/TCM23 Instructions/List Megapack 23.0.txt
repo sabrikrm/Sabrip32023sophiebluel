@@ -1,0 +1,28 @@
+﻿--------------------------------------------------------------------
+--------------------------------------------------------------------
+------------------Logopack TCM22 by TCMLogos.com--------------------
+--------------------------------------------------------------------
+--------------------------------------------------------------------
+---------------------------TOTAL 23.0-------------------------------
+
+232 Nations : 62490 Clubs + 5744 Competitions + 528 Divers / Miscellaneous = 68762 LOGOS
+
+--------------------------------------------------------------------
+FM14 : TOTAL TCM 14 : 7483 Clubs + 1535 Competitions & Divers = 9018 LOGOS
+FM15 : TOTAL TCM 15 : 14199 Clubs + 1980 Competitions & Divers = 16179 LOGOS
+FM16 : TOTAL TCM 16 : 17043 Clubs + 3022 Competitions & Divers = 20065 LOGOS
+FM17 : TOTAL TCM 17 : 18332 Clubs + 2628 Competitions + 518 Divers = 21478 LOGOS
+FM18 : TOTAL TCM 18 : 26439 Clubs + 3195 Competitions + 583 Divers = 30217 LOGOS
+FM19 : TOTAL TCM 19 : 33201 Clubs + 3722 Competitions + 550 Divers = 37473 LOGOS
+FM20 : TOTAL TCM 20 : 53090 Clubs + 4019 Competitions + 552 Divers = 57661 LOGOS
+FM21 : TOTAL TCM 21 : 60321 Clubs + 5639 Competitions + 559 Divers = 66519 LOGOS
+FM22 : TOTAL TCM 22 : 60940 Clubs + 5532 Competitions + 528 Divers = 67000 LOGOS
+FM23 : TOTAL TCM 23 : 62490 Clubs + 5744 Competitions + 528 Divers = 68762 LOGOS
+
+-- TCM23 : --
+AFRICA........ :  3507 Clubs +  234 Competitions
+ASIA.......... :  6795 Clubs +  916 Competitions
+EUROPA........ : 43408 Clubs + 3591 Competitions
+NORTH AMERICA. :  3725 Clubs +  340 Competitions
+SOUTH AMERICA. :  4577 Clubs +  306 Competitions
+OCEANIA....... :   478 Clubs +   93 Competitions

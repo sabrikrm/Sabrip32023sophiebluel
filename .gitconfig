@@ -1,0 +1,12 @@
+[user]
+	name = sabri karoumi
+	mail = skaroumi71@gmail.com
+	email = skaroumi71@gmail.com
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+[core]
+	editor = vim
+[merge]
+	tool = vimdiff

@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
   console.log(logUser);
 });
 
-// *********************************
+// urgent modifier erreur placeholder et position message d'erreur
 // Fetch la route user
 
 async function loginUser() {

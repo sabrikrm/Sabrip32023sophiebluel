@@ -1,7 +1,8 @@
-// *****************************************************************************************************
-//**********************************  AFFICHAGE DE LA MODAL  *******************************************
-// *****************************************************************************************************
+
+// AFFICHAGE DE LA MODAL 
+// Fonction pour ouvrir et manipuler la modal d'édition
 function editModal() {
+  // Récupérer les éléments du DOM nécessaires
     const addProject = document.getElementById("editModal");
     const inputFile = document.getElementById("filetoUpload");
     const selectCategory = document.getElementById("category");
@@ -11,7 +12,7 @@ function editModal() {
     const previewModal = document.querySelector("#previewModal");
     let iCanSubmit = false;
   
-    //*************************************Cache - Cache differentes section Modale
+    //Cache - Cache differentes section Modale
     addProject.addEventListener("click", () => {
       gallerySection.style.display = "none";
       editSection.style.display = "";
@@ -24,10 +25,10 @@ function editModal() {
       previewModal.style.display = "none";
     });
   
-    //*************************************PARTIE IMG
+    //PARTIE IMG
     inputFile.addEventListener("change", addPicture);
   
-    //*************************************PARTIE CATEGORIE
+    //PARTIE CATEGORIE
   
     // Utiliser les données de l'API du 2e Fetch pour générer les options de l'élément select
   
@@ -91,7 +92,7 @@ function editModal() {
   
     addToApi.addEventListener("submit", (e) => {
       e.preventDefault();
-      //*************************************Récupérer les valeurs INPUTs en admin
+      //Récupérer les valeurs INPUTs en admin
       if (iCanSubmit) {
         //Récupérer image
         const image = inputFile.files[0];

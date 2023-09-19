@@ -7,10 +7,10 @@ fetch("http://localhost:5678/api/works")
     }
   })
   .then(function(value) {
-    console.log(value);
+    console.log(value);// Affichage de la réponse JSON 
     for(let i=0; i<value.length; i++)
      {
-       console.log(value[i].imageUrl)
+       console.log(value[i].imageUrl)// Affichage de chaque URL d'image
     }
   })
   .catch(function(err) {
@@ -25,8 +25,8 @@ async function fetchApiWorks() {
     const btnTitle = getButtonTitles(cards);
     console.log(`le titre des BTN filtres  : ${btnTitle.join("  /  ")}`);
     console.log(cards);
-    filtersBtn(btnTitle);
-    workDisplay(cards);
+    filtersBtn(btnTitle);// Création des boutons de filtrage
+    workDisplay(cards);// Affichage des "works"
   } catch (error) {
     console.log(
       `Erreur chargement Fonction fetchApiWorks Cartes des Projets:  ${error}`
@@ -40,7 +40,7 @@ async function fetchApiCategories() {
     await fetch(api + "categories")
       .then((res) => res.json())
       .then((data) => (categories = data));
-    console.log(categories);
+    console.log(categories);// Affichage des catégories
   } catch (error) {
     console.log(
       `Erreur chargement Fonction fetchApiWorks Cartes des Projets:  ${error}`

@@ -12,7 +12,7 @@ function checkToken() {
   }
 }
 
-//LOG OUT a la fermeture onglet donc suppresion du token oui
+//LOG OUT a la fermeture onglet donc suppresion du token
 function removeToken() {
   // Supprime le token du localStorage
   localStorage.removeItem("token");
@@ -22,11 +22,11 @@ function removeToken() {
 //événement fermeture onglet ou redirection vers un autre site
 window.addEventListener("unload", removeToken);
 
-// *****************************DOM QUI PASSE EN MODE ADMIN EDITOR  
+// DOM QUI PASSE EN MODE ADMIN EDITOR  
 
 function adminEdition() {
   adminHTML();
-  //************************************* MODAL EDIT SUPRESSION
+  //MODAL EDIT SUPRESSION
 
   const modalJs = document.getElementById("titleProjectRemove");
 
@@ -37,7 +37,7 @@ function adminEdition() {
     openModal();
     editModal();
   });
-  //*************************************SUPRESSION DES TRAVAUX DE L'API
+  //SUPRESSION DES TRAVAUX DE L'API
   const deleteWorksApi = document.querySelector("body > div > button");
   //Confirmation DELETE CARTES dans L'API
   deleteWorksApi.addEventListener("click", (e) => {
@@ -45,12 +45,12 @@ function adminEdition() {
     functionDeleteWorksApi();
   });
 }
-//*************************************AUTRE FONCTION DU MODE ADMIN
+//AUTRE FONCTION DU MODE ADMIN
 const adminHTML = () => {
-  //*************************************PARTIE SITE AVEC AJOUT DES ELTMTS EDITOR SUR DOM
+  //PARTIE SITE AVEC AJOUT DES ELTMTS EDITOR SUR DOM
  
 
-  //*************************************Créer le bandeau Admin Editor
+  //Créer le bandeau Admin Editor
   const flagEditor = document.createElement("div");
   flagEditor.classList.add("flagEditor");
   document
@@ -61,11 +61,11 @@ const adminHTML = () => {
   spanFlagEditor.classList.add("projectRemove");
   spanFlagEditor.textContent = "Mode édition";
 
-  //*************************************Créer Le SPAN avec le "i"
+  //Créer Le SPAN avec le "i"
   const iconFlagEditor = document.createElement("i");
   iconFlagEditor.className = "fa-regular fa-pen-to-square";
 
-  //*************************************Insérer l'élément i parent avant le texte de span
+  //Insérer l'élément i parent avant le texte de span
   spanFlagEditor.insertBefore(iconFlagEditor, spanFlagEditor.firstChild);
 
   const btnFlagEditor = document.createElement("button");
@@ -74,11 +74,11 @@ const adminHTML = () => {
   flagEditor.appendChild(spanFlagEditor);
   flagEditor.appendChild(btnFlagEditor);
 
-  //*************************************Pointage des position à injecter
+  //Pointage des position à injecter
   const figure = document.querySelector("#introduction figure");
   const titleProject = document.querySelector("#portfolio > h2");
 
-  //*************************************clonage du Span au dessus! true = Mm enfant aussi
+  //clonage du Span au dessus! true = Mm enfant aussi
   //SPAN "Mode édition" en dessou de Sophie
   const spanFigure = spanFlagEditor.cloneNode(true);
   spanFigure.classList.remove("projectRemove");
@@ -88,13 +88,13 @@ const adminHTML = () => {
   spanTitleProject.classList.remove("projectRemove");
   spanTitleProject.setAttribute("id", "titleProjectRemove");
 
-  //*************************************INJECTION  SPAN
+  //INJECTION  SPAN
   figure.appendChild(spanFigure);
   titleProject.appendChild(spanTitleProject);
 
-  //*************************************
-  //************************************* Login -> Logout HTML
-  //*************************************
+
+  //Login -> Logout HTML
+  
 
   // Sélectionner le <li> pour logout
   const logout = document.querySelector(
@@ -118,10 +118,10 @@ const adminHTML = () => {
     window.location.assign("index.html");
   });
 
-  //*************************************Ajout class pour mieux intégrer le FlagEditor 
+  //Ajout class pour mieux intégrer le FlagEditor 
   document.body.classList.add("marginTop");
 
-  //*************************************Delete les filtres de Recherche HTML pendant le mode admin
+  //Delete les filtres de Recherche HTML pendant le mode admin
   filterButtons.remove();
 };
 function openModal() {
@@ -129,7 +129,7 @@ function openModal() {
   //evitez les doublettes images Gallery
   document.getElementById("modalGrid").innerHTML = "";
 
-  //*************************************INJECTION DES ELEMENTS FETCHER
+  //INJECTION DES ELEMENTS FETCHER
   // Récupérer les liens des images
   // nouveau tableau
   const imagesUrl = [...document.querySelectorAll(".gallery img")].map((img) =>
@@ -139,7 +139,7 @@ function openModal() {
   // Créer un Set pour n'avoir que des liens uniques
   const imagesUrlSet = new Set(imagesUrl);
 
-  //*************************************INJECTIONS DES CARTES DS MODAL
+  //INJECTIONS DES CARTES DS MODAL
   const modal = document.createElement("div");
   modal.classList.add("modal");
 

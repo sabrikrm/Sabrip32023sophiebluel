@@ -115,7 +115,7 @@ const adminHTML = () => {
   logoutLink.addEventListener("click", (event) => {
     event.preventDefault();
     removeToken();
-    window.location.assign("index.html");
+    window.location.assign("./index.html");
   });
 
   //Ajout class pour mieux intégrer le FlagEditor 

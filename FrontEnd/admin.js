@@ -12,7 +12,7 @@ function checkToken() {
   }
 }
 
-//LOG OUT a la fermeture onglet donc suppresion du token
+//LOG OUT a la fermeture onglet donc suppresion du token oui
 function removeToken() {
   // Supprime le token du localStorage
   localStorage.removeItem("token");

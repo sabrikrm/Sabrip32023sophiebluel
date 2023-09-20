@@ -16,12 +16,14 @@ fetch("http://localhost:5678/api/works")
   .catch(function(err) {
     // Une erreur est survenue
   });
+  //fetch works + stockage dans variable
   
 async function fetchApiWorks() {
   try {
     await fetch(api + "works")
       .then((res) => res.json())
       .then((data) => (cards = data));
+      // Récupération des titres des boutons de filtre
     const btnTitle = getButtonTitles(cards);
     console.log(`le titre des BTN filtres  : ${btnTitle.join("  /  ")}`);
     console.log(cards);
@@ -53,14 +55,14 @@ function getButtonTitles(cards) {
   return [...new Set(cards.map((card) => card.category.name))];
 }
 
-
-function filtersBtn(btnTitle) {
+// Fonction pour créer les boutons de filtre
+function filtersBtn(btnTitle) { 
 
   const allButton = document.createElement("button");
   allButton.classList.add("btn", "active");
   allButton.textContent = "Tous";
   filterButtons.appendChild(allButton);
-  filterButtons.classList.add("filter");
+  filterButtons.classList.add("filter");  // Ajout de classe pour les boutons de filtrage
 
   
 
@@ -77,7 +79,7 @@ function filtersBtn(btnTitle) {
 
   buttons.forEach((btn) => {
     btn.addEventListener("click", (e) => {
-      categoryIdValue = e.target.textContent;
+      categoryIdValue = e.target.textContent; // Récupération de la valeur de l'ID de la catégorie
       console.log(categoryIdValue);
       buttons.forEach((btn) => {
         btn.classList.remove("active");

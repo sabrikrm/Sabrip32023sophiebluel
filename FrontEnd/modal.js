@@ -84,6 +84,7 @@ function editModal() {
   
         
       }
+      // Changement du style du bouton si toutes les conditions sont remplies
       if (titleSelected && categorySelected && imageSelected) {
         submitForm.style.background = " #1d6154";
         iCanSubmit = true;

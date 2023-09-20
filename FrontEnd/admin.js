@@ -103,7 +103,7 @@ const adminHTML = () => {
 
   // Créer un élément <a> pour le lien de déconnexion logout au lieu de login
   const logoutLink = document.createElement("a");
-  logoutLink.href = "./index.html";
+  logoutLink.href = "../index.html";
 
   const logoutText = document.createTextNode("logout");
   logoutLink.appendChild(logoutText);

@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
   e.preventDefault();
   logUser.email = inputEmail.value;
   logUser.password = inputPassword.value;
-  console.log(logUser);
+
 });
 
 // urgent modifier erreur placeholder et position message d'erreur
@@ -57,31 +57,30 @@ async function loginUser() {
       .then((response) => response.json())
       .then((responseData) => {
         data = responseData;
-        console.log(data);
+       
       });
     if (data.message) {
       loginError.textContent = "Vos informations utilisateur / mot de passe ne sont pas correctes";
    
-      console.log(logUser);
+     
     } else if (data.error) {
       passwordError.textContent = "Vos informations utilisateur / mot de passe ne sont pas correctes";
       
    
 
 
-      console.log(logUser);
     } else {
    
       passwordError.textContent = "";
       loginError.textContent = "";
-      console.log("LogAdmin OK");
-      console.log(logUser);
+   
+
       // stockage du token dans le stockage local
       localStorage.setItem("token", data.token);
       //Redirection index.html
       window.location.href = "../index.html";
     }
   } catch (error) {
-    console.log(error);
+
   }
 }

@@ -128,7 +128,7 @@ function editModal() {
             return response.json();
           })
           .then((data) => {
-            console.log("votre requête POST est passé :", data);
+           
             fetchApiWorks();
             workDisplay();
             closeModal();
@@ -138,11 +138,11 @@ function editModal() {
             inputFile.value = "";
           })
           .catch((error) => {
-            console.error("Error:", error);
-            console.log("Ta requête POST n'est PAS passée :( ");
+        
+            
           });
       } else {
-        console.log("Formulaire invalide !!!");
+   
       }
     });
   }
@@ -257,7 +257,7 @@ function editModal() {
   
     if (file.size > maxSize) {
       errorImg.textContent = "Votre image est trop volumineuse";
-      console.log("fichier > 4MO!");
+    
       return;
     }
   

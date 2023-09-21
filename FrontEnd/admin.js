@@ -4,10 +4,9 @@ function checkToken() {
   const token = localStorage.getItem("token");
   if (token) {
     
-    console.log("token present dans le local storage , mode admin ACTIVÉ");
+
     adminEdition();
   } else {
-    console.log("Pas de token dans le local storage , mode admin DESACTIVÉ");
    
   }
 }
@@ -234,8 +233,8 @@ const functionDeleteWorksApi = () => {
   //méthode JavaScript qui renvoie un tableau contenant les clés d'un objet
   Object.keys(deletedImages).forEach(async (id) => {
     try {
-      if (token === false) return console.log({ error: "Pas connecté" });
-
+      if (token === false) return;
+  
       const response = await fetch(`${api}works/${id}`, {
         method: "DELETE",
         headers: {
@@ -244,17 +243,15 @@ const functionDeleteWorksApi = () => {
         },
       });
       if (response.ok) {
-        console.log(`Image avec ID ${id} supprimée`);
+        // Succès
       } else {
         throw new Error(response.statusText);
       }
     } catch (e) {
-      console.error(
-        `Erreur lors de la suppression de l'image avec ID ${id}: ${e}`
-      );
+      // Gestion des erreurs
     }
   });
-};
+}  
 const buttonElement = document.getElementById("btnFlagEditor");
 buttonElement.addEventListener("click", function(event) {
   event.preventDefault(); 

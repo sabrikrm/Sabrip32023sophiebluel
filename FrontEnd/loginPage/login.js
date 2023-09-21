@@ -1,48 +1,47 @@
-// LOGIN recuperation du formulaire pour envoi
+// URL dde l'API pour la connexion utilisateur
 const loginUrl = "http://localhost:5678/api/users/login";
+
+// Éléments du formulaire de connexion
 const inputEmail = document.getElementById("email");
 const inputPassword = document.getElementById("password");
 const submitBtn = document.querySelector("input[type='submit']");
 const form = document.getElementById("loginForm");
+
+// Éléments pour afficher les erreurs
 const loginError = document.querySelector(".loginError");
 const passwordError = document.querySelector(".passwordError");
 
+// Objet pour stocker les informations d'identification utilisateur
 const logUser = {
   email: "",
   password: "",
 };
 
-// 
-//LOGIQUE contrôle du Log IN
-
-// Evenement au Submit
+// Écouteur d'événement pour la soumission du formulaire
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   e.stopPropagation();
   loginUser();
 });
 
-// Evenement au MAIL
+// Écouteur d'événement pour la saisie de l'adresse e-mail
 inputEmail.addEventListener("input", (e) => {
   inputEmail.reportValidity();
   logUser.email = e.target.value;
 });
 
-// Evenement au Password
+// Écouteur d'événement pour la saisie du mot de passe
 inputPassword.addEventListener("input", (e) => {
   inputPassword.reportValidity();
   logUser.password = e.target.value;
 });
 
-//Evenement au chargement du DOM
+// Écouteur d'événement pour le chargement du DOM
 document.addEventListener("DOMContentLoaded", (e) => {
   e.preventDefault();
   logUser.email = inputEmail.value;
   logUser.password = inputPassword.value;
-
 });
-
-// urgent modifier erreur placeholder et position message d'erreur
 // Fetch la route user
 
 async function loginUser() {
@@ -60,15 +59,15 @@ async function loginUser() {
        
       });
     if (data.message) {
+      // Afficher le message d'erreur pour l'identification utilisateur
       loginError.textContent = "Vos informations utilisateur / mot de passe ne sont pas correctes";
    
      
     } else if (data.error) {
+      // Afficher le message d'erreur pour le mot de passe
       passwordError.textContent = "Vos informations utilisateur / mot de passe ne sont pas correctes";
       
-   
-
-
+       // Si tout est en ordre
     } else {
    
       passwordError.textContent = "";
@@ -77,10 +76,11 @@ async function loginUser() {
 
       // stockage du token dans le stockage local
       localStorage.setItem("token", data.token);
+
       //Redirection index.html
       window.location.href = "../index.html";
     }
   } catch (error) {
-
+// Insérer ici le traitement des erreurs, si besoim
   }
 }

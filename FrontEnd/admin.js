@@ -1,34 +1,24 @@
-//partie ADMIN
+// Vérification du token pour autoriser le mode administrateur
 function checkToken() {
-  // Vérifie si le token est dans le localStorage
-  const token = localStorage.getItem("token");
+  const token = localStorage.getItem("token"); // Récupère le token du localStorage
   if (token) {
-    
-
-    adminEdition();
-  } else {
-   
-  }
+    adminEdition(); // Appelle la fonction qui active le mode administrateur
+  } 
 }
 
-//LOG OUT a la fermeture onglet donc suppresion du token
+// Suppression du token lors de la fermeture de l'onglet ou du navigateur
 function removeToken() {
-  // Supprime le token du localStorage
   localStorage.removeItem("token");
   sessionStorage.removeItem("deletedImages");
 }
+window.addEventListener("unload", removeToken); // Ajout d'un écouteur d'événement sur la fermeture de la fenêtre
 
-//événement fermeture onglet ou redirection vers un autre site
-window.addEventListener("unload", removeToken);
-
-// DOM QUI PASSE EN MODE ADMIN EDITOR  
-
+// Activation du mode administrateur
 function adminEdition() {
-  adminHTML();
-  //MODAL EDIT SUPRESSION
-
+  adminHTML(); // Modifie le HTML pour le mode admin
+  
+  // Configuration de la modal pour éditer/supprimer
   const modalJs = document.getElementById("titleProjectRemove");
-
   modalJs.addEventListener("click", (e) => {
     e.preventDefault();
     modalHTML();
@@ -36,12 +26,12 @@ function adminEdition() {
     openModal();
     editModal();
   });
-  //SUPRESSION DES TRAVAUX DE L'API
+
+  // Suppression des travaux depuis l'API
   const deleteWorksApi = document.querySelector("body > div > button");
-  //Confirmation DELETE CARTES dans L'API
   deleteWorksApi.addEventListener("click", (e) => {
     e.preventDefault();
-    functionDeleteWorksApi();
+    functionDeleteWorksApi(); // Appelle la fonction de suppression des travaux
   });
 }
 //AUTRE FONCTION DU MODE ADMIN
@@ -199,14 +189,19 @@ function openModal() {
     const deleteALL = document.querySelector("#deleteAllWorks");
     deleteALL.addEventListener("click", () => {
       const figureModals = document.querySelectorAll("#modalGrid figure");
+
       const galleryModals = document.querySelectorAll("#portfolio figure");
+
       const deletedImages =
         JSON.parse(sessionStorage.getItem("deletedImages")) || {};
+
       const imageIds = [];
 
       figureModals.forEach((figure) => {
         const dataCardId = figure.getAttribute("data-card-id");
+
         imageIds.push(dataCardId);
+        
         // stocke l'ID deletedImages
         deletedImages[dataCardId] = true;
       });
@@ -227,8 +222,10 @@ function openModal() {
 const functionDeleteWorksApi = () => {
   // Récupérer la chaîne de sessionStorage
   const deletedImagesJSON = sessionStorage.getItem("deletedImages");
+
   // Convertir la chaîne en objet JavaScript
   const deletedImages = JSON.parse(deletedImagesJSON);
+
   // Supprimer chaque image du SESSION STORAGE
   //méthode JavaScript qui renvoie un tableau contenant les clés d'un objet
   Object.keys(deletedImages).forEach(async (id) => {
@@ -253,6 +250,8 @@ const functionDeleteWorksApi = () => {
   });
 }  
 const buttonElement = document.getElementById("btnFlagEditor");
+
 buttonElement.addEventListener("click", function(event) {
+
   event.preventDefault(); 
 })

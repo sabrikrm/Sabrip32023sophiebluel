@@ -45,7 +45,7 @@ function editModal() {
         selectCategory.appendChild(option);
       });
     }
-    //************************************* Condition Formulaire POST
+    //Condition Formulaire POST
   
     editSection.addEventListener("input", () => {
       const editTitle = document.querySelector("#title");
@@ -62,7 +62,7 @@ function editModal() {
       let category = document.querySelector("#category").value;
       const title = editTitle.value;
       const image = inputFile.files[0];
-      // console.log(typeof image);
+      
   
       if (image === null || image === undefined) {
         errorImg.textContent = "Veuillez selectionnez une image";
@@ -128,18 +128,14 @@ function editModal() {
             return response.json();
           })
           .then((data) => {
-           
             fetchApiWorks();
             workDisplay();
             closeModal();
-
-            //enlever le refresh a l'ajout/suppression de photo
-  
             inputFile.value = "";
           })
           .catch((error) => {
         
-            
+            // Insérer ici le traitement des erreurs, si nécessaire
           });
       } else {
    
@@ -147,20 +143,26 @@ function editModal() {
     });
   }
   
-  ///// manque constante pour ajout et suppression de photo derniere fonction normalement avec msg erreur max 4mo pour ajout photo
   
+  // Fonction pour désactiver le défilement de la page
   function disableScroll() {
     document.body.classList.add("modalOpen");
   }
-  
+
+  // Fonction pour activer le défilement de la page
   function enableScroll() {
     document.body.classList.remove("modalOpen");
   }
-  
+  // Fonction pour afficher la fenêtre modale
   function displayModal() {
     const modal = document.querySelector("#modal");
+    // Sélectionner le bouton de fermeture de la fenêtre modale par son ID
     const closeModalBtn = document.querySelector("#closeModal");
+
+    // Attacher un événement au bouton de fermeture pour fermer la fenêtre modale
     closeModalBtn.addEventListener("click", closeModal);
+
+    // Fermer la fenêtre modale lorsque l'on clique en dehors de son contenu
     window.addEventListener("click", (e) => {
       if (e.target === modal) closeModal();
     });
@@ -248,30 +250,50 @@ function editModal() {
     );
     
   };
-  const addPicture = () => {
-    const inputFile = document.getElementById("filetoUpload");
-    const viewImage = document.getElementById("addImageContainer");
-    const file = inputFile.files[0];
-    // 4Mo en octets => Message D'ERREUR taille max sinon impossible de charger
-    const maxSize = 4 * 1024 * 1024;
+ // Fonction pour ajouter une image
+const addPicture = () => {
+  // Récupérer l'élément input de type fichier
+  const inputFile = document.getElementById("filetoUpload");
   
-    if (file.size > maxSize) {
-      errorImg.textContent = "Votre image est trop volumineuse";
+  // Récupérer l'élément conteneur où l'image sera affichée
+  const viewImage = document.getElementById("addImageContainer");
+  
+  // Récupérer le fichier depuis l'input
+  const file = inputFile.files[0];
+  
+  // Définir la taille maximale du fichier (4 Mo en octets)
+  const maxSize = 4 * 1024 * 1024;
+
+  // Vérifier la taille du fichier
+  if (file.size > maxSize) {
+    // Afficher un message d'erreur si le fichier est trop gros
+    errorImg.textContent = "Votre image est trop volumineuse";
     
-      return;
-    }
-  
-    const reader = new FileReader();
-  
-    reader.addEventListener("load", function () {
-      viewImage.innerHTML = "";
-      const img = document.createElement("img");
-      img.setAttribute("src", reader.result);
-      viewImage.appendChild(img);
-      viewImage.style.padding = "0";
-    });
-  
-    reader.readAsDataURL(file);
-  };
-  
-  
+    // Quitter la fonction
+    return;
+  }
+
+  // Créer un nouvel objet FileReader pour lire le fichier
+  const reader = new FileReader();
+
+  // Écouter l'événement "load" qui se déclenche lorsque le fichier est complètement lu
+  reader.addEventListener("load", function () {
+    // Effacer le contenu actuel de l'élément conteneur
+    viewImage.innerHTML = "";
+    
+    // Créer un nouvel élément img
+    const img = document.createElement("img");
+    
+    // Définir la source de l'élément img avec le résultat de la lecture du fichier
+    img.setAttribute("src", reader.result);
+    
+    // Ajouter l'image au conteneur
+    viewImage.appendChild(img);
+    
+    // Supprimer le padding du conteneur
+    viewImage.style.padding = "0";
+  });
+
+  // Commencer la lecture du fichier en tant que Data URL
+  reader.readAsDataURL(file);
+};

@@ -14,14 +14,20 @@ function editModal() {
   
     //Cache - Cache differentes section Modale
     addProject.addEventListener("click", () => {
+
       gallerySection.style.display = "none";
+
       editSection.style.display = "";
+
       previewModal.style.display = "initial";
     });
   
     previewModal.addEventListener("click", () => {
+
       gallerySection.style.display = "";
+
       editSection.style.display = "none";
+
       previewModal.style.display = "none";
     });
   
@@ -33,67 +39,107 @@ function editModal() {
     // Utiliser les données de l'API du 2e Fetch pour générer les options de l'élément select
   
     if (selectCategory.options.length === 0) {
+
       const emptyOption = document.createElement("option");
+
       emptyOption.value = "";
+
       emptyOption.textContent = "";
+
       selectCategory.appendChild(emptyOption);
   
       categories.forEach((category) => {
+
         const option = document.createElement("option");
+
         option.textContent = category.name;
+
         option.setAttribute("data-id", category.id);
+
         selectCategory.appendChild(option);
       });
     }
     //Condition Formulaire POST
   
     editSection.addEventListener("input", () => {
+
       const editTitle = document.querySelector("#title");
+
       const errorImg = document.getElementById("errorImg");
+
       const titleError = document.querySelector("#ErrorTitleSubmit");
+
       const categoryError = document.querySelector("#ErrorCategorySubmit");
+
       const submitForm = document.querySelector(
+
         "#editWorks > div.footerModal.editFooter > input[type=submit]"
       );
       iCanSubmit = false;
+
       titleSelected = false;
+
       categorySelected = false;
+
       submitForm.style.background = " grey";
+
       let category = document.querySelector("#category").value;
+
       const title = editTitle.value;
+
       const image = inputFile.files[0];
       
   
       if (image === null || image === undefined) {
+
         errorImg.textContent = "Veuillez selectionnez une image";
+
         imageSelected = false;
+
       } else if (title.length < 1) {
+
         titleError.textContent = "Ajoutez un titre";
+
         titleSelected = false;
+
       } else if (category === "") {
+
         categoryError.textContent = "Choisissez une catégorie";
+
         titleError.textContent = "";
+
         categorySelected = false;
       } else {
         //submitForm.style.background = " #1d6154";
+
         titleError.textContent = "";
+
         categoryError.textContent = "";
+
         categorySelected = true;
+
         titleSelected = true;
+
         imageSelected = true;
+
   
         
       }
       // Changement du style du bouton si toutes les conditions sont remplies
+
       if (titleSelected && categorySelected && imageSelected) {
+
         submitForm.style.background = " #1d6154";
+
         iCanSubmit = true;
       }
     });
   
     addToApi.addEventListener("submit", (e) => {
+
       e.preventDefault();
       //Récupérer les valeurs INPUTs en admin
+
       if (iCanSubmit) {
         //Récupérer image
         const image = inputFile.files[0];
@@ -103,13 +149,19 @@ function editModal() {
   
         //Récupérer id du fetch Category depuis la liste
         let categorySelect = document.querySelector("#category");
+
         let selectedOption = categorySelect.selectedOptions[0];
+
         let category = selectedOption.getAttribute("data-id");
+
         category = parseInt(category);
   
         const formData = new FormData();
+
         formData.append("image", image);
+
         formData.append("title", title);
+        
         formData.append("category", category);
         //console.log(formData);
   
